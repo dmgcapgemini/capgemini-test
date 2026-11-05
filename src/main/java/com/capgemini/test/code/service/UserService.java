@@ -48,6 +48,12 @@ public class UserService {
     if (userRepository.existsByEmail(request.email())) {
       throw new UserValidationException("email");
     }
+    if (userRepository.existsByDni(request.dni())) {
+      throw new UserValidationException("dni");
+    }
+    if (userRepository.existsByPhone(request.phone())) {
+      throw new UserValidationException("phone");
+    }
 
     validateDni(request.dni());
 
